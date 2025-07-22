@@ -76,7 +76,7 @@ button.shopify-payment-button__button--unbranded,
     bottom: var(--buttons-border-width);
     left: var(--buttons-border-width);
     z-index: 1;
-    border-radius: 4px !important;
+    border-radius: 0px !important;
     box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text), var(--border-opacity)), 0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
     transition: box-shadow var(--duration-short) ease;
 }
@@ -586,23 +586,31 @@ button#quoteModal:hover {
 
 @media only screen and (max-width: 1023px) {
     .feature_div {
-        padding: 20px 0px !important;
-        margin-top: 50px !important;
-        margin-bottom: 0px !important;
+        padding: 30px 0px !important;
+        margin-top: -50px !important;
+        margin-bottom: 30px !important;
     }
 }
 
 
-@media only screen and (max-width : 767px) {
+@media (max-width : 767px) {
+    .feature_div {
+        padding: 0 !important;
+    }
+
     .feature_div .row {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
     }
 
+    .feature_div .row>div {
+        min-width: 100% !important;
+    }
+
     .feature_inner {
         width: 100% !important;
-        padding: 10px 0px !important;
+        padding: 20px 0px !important;
         border-right: none !important;
         border-bottom: 1px solid #ddd;
     }
