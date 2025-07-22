@@ -1,0 +1,61 @@
+
+h2.title.title-wrapper--no-top-margin.h1 {
+  font-weight: 600;
+}
+h1.main-page-title.page-title.h0 {
+  font-weight: 600;
+}
+h1.main-page-title.page-title.h0 {
+  text-align: center;
+}
+.contact__button {
+  text-align: center;
+}
+h2.title.title-wrapper--no-top-margin.h1 {
+  text-align: center;
+}
+/* --------------- */
+.contact img {
+    max-width: 100%;
+  }
+  
+  .contact .form__message {
+    align-items: flex-start;
+  }
+  
+  .contact .icon-success {
+    margin-top: 0.2rem;
+  }
+  
+  .contact .field {
+    margin-bottom: 1.5rem;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .contact .field {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .contact__button {
+    margin-top: 3rem;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .contact__button {
+      margin-top: 4rem;
+    }
+  }
+  
+  @media screen and (min-width: 750px) {
+    .contact__fields {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 2rem;
+    }
+  }
+  
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
+  

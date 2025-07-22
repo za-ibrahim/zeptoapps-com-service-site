@@ -1,0 +1,345 @@
+{
+    "sections": {
+        "image_banner": {
+            "type": "image-banner",
+            "blocks": {
+                "heading": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Top Shopify Experts for all Your Shopify Requirements",
+                        "heading_size": "h1"
+                    }
+                },
+                "text": {
+                    "type": "text",
+                    "disabled": true,
+                    "settings": {
+                        "text": "Zepto provides fully customized e-commerce experiences with top-notch web- development, web design, and Shopify app services.",
+                        "text_style": "body"
+                    }
+                },
+                "button": {
+                    "type": "buttons",
+                    "settings": {
+                        "button_label_1": "All Services",
+                        "button_link_1": "shopify:\/\/collections\/all",
+                        "button_style_secondary_1": true,
+                        "button_label_2": "",
+                        "button_link_2": "",
+                        "button_style_secondary_2": false
+                    }
+                }
+            },
+            "block_order": [
+                "heading",
+                "text",
+                "button"
+            ],
+            "settings": {
+                "image": "shopify:\/\/shop_images\/shopify-Banner.webp",
+                "image_overlay_opacity": 0,
+                "image_height": "large",
+                "adapt_height_first_image": false,
+                "desktop_content_position": "middle-left",
+                "show_text_box": false,
+                "desktop_content_alignment": "center",
+                "color_scheme": "accent-2",
+                "mobile_content_alignment": "center",
+                "stack_images_on_mobile": false,
+                "show_text_below": false
+            }
+        },
+        "16565739954036687d": {
+            "type": "rich-text",
+            "disabled": true,
+            "blocks": {
+                "1656573995f6152477-0": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Shopify App",
+                        "heading_size": "h1"
+                    }
+                },
+                "1656573995f6152477-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>We power the growth of millions of merchants, as well as their customers<\/p>"
+                    }
+                }
+            },
+            "block_order": [
+                "1656573995f6152477-0",
+                "1656573995f6152477-1"
+            ],
+            "settings": {
+                "color_scheme": "background-1",
+                "full_width": true,
+                "padding_top": 100,
+                "padding_bottom": 0
+            }
+        },
+        "16557265113e8b854e": {
+            "type": "image-with-text",
+            "disabled": true,
+            "blocks": {
+                "16557265111f1bb117-0": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "We power the growth of millions of merchants, as well as their customers",
+                        "heading_size": "h1"
+                    }
+                },
+                "16557265111f1bb117-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Exclusive Shopify App for Live Preview, with unlimited customization options and more. Reduce delivery time by automating the customer preference right from your store. <\/p>",
+                        "text_style": "body"
+                    }
+                },
+                "16557265111f1bb117-2": {
+                    "type": "button",
+                    "settings": {
+                        "button_label": "Check From Shopify Play Store",
+                        "button_link": "https:\/\/apps.shopify.com\/product-personalizer?ref=zepto-apps"
+                    }
+                }
+            },
+            "block_order": [
+                "16557265111f1bb117-0",
+                "16557265111f1bb117-1",
+                "16557265111f1bb117-2"
+            ],
+            "settings": {
+                "height": "adapt",
+                "desktop_image_width": "medium",
+                "layout": "image_first",
+                "desktop_content_position": "middle",
+                "desktop_content_alignment": "left",
+                "content_layout": "no-overlap",
+                "color_scheme": "background-2",
+                "mobile_content_alignment": "left",
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        },
+        "multicolumn": {
+            "type": "multicolumn",
+            "disabled": true,
+            "blocks": {
+                "column1": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Zepto \/apps>",
+                        "text": "<p><strong>From apps that bring customers back to your store to apps that increase your AOV, our Shopify apps are designed to make your site work better.<\/strong><\/p>",
+                        "link_label": "Browse Apps",
+                        "link": "https:\/\/apps.shopify.com\/partners\/zepto-apps"
+                    }
+                },
+                "column2": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Zepto Themes",
+                        "text": "<p><strong>Ongoing maintenance packages for any business size. From light to heavy customization needs for your business at a fraction of the cost<\/strong><\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "column3": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Zepto Serrvices",
+                        "text": "<p><strong>Looking for help with a small tweak or change? Have a budget of less than $1000? HulkApps team of ecommerce experts specialize in small customization solutions to Shopify.   <\/strong><\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "column1",
+                "column2",
+                "column3"
+            ],
+            "settings": {
+                "title": "",
+                "heading_size": "h0",
+                "image_width": "third",
+                "image_ratio": "adapt",
+                "columns_desktop": 3,
+                "column_alignment": "left",
+                "background_style": "none",
+                "button_label": "",
+                "button_link": "",
+                "color_scheme": "background-1",
+                "columns_mobile": "1",
+                "swipe_on_mobile": false,
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        },
+        "165803861970f6911d": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<style> \n    svg.icon.icon-play {\n        color: #fff;\n        border: 2px solid #fff;\n        background: red;\n        width: 80px;\n        height: 80px;\n        border-radius: 50%;\n        text-align: center;\n        line-height: 100px;\n        vertical-align: middle;\n        padding: 22px;\n        margin: 0 auto;\n        cursor: pointer;\n    }\n\n    #youtubeImage:hover {\n        background: red;\n        border: 1px solid red;\n    }\n\n    .iframe_placeholder {\n        height: 400px;\n    }\n\n    @media only screen and (max-device-width : 768px) {\n        .iframe_placeholder {\n            height: 200px !important;\n        }\n\n        svg.icon.icon-play {\n            color: #fff;\n            border: 2px solid #fff;\nbackground: red;\n            width: 60px;\n            height: 60px;\n            border-radius: 50%;\n            text-align: center;\n            line-height: 100px;\n            vertical-align: middle;\n            padding: 16px;\n            margin: 0 auto;\n            cursor: pointer;\n        }\n    }\n<\/style>\n<div class=\"feature_div\" style=\"margin-top: -100px\">\n    <div class=\"row\">\n        <div class=\"col-md-4 col-sm-6\">\n            <div class=\"feature_inner\">\n                <svg width=\"36\" height=\"40\" viewBox=\"0 0 36 40\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n                    <path\n                        d=\"M30.903 2.34375C30.0495 2.34375 29.2494 2.57414 28.5593 2.97437V1.17188C28.5593 0.524687 28.0346 0 27.3874 0H8.63742C7.99016 0 7.46547 0.524687 7.46547 1.17188V2.98867C6.76992 2.57953 5.96063 2.34375 5.09695 2.34375C2.51227 2.34375 0.409454 4.44656 0.409454 7.03125C0.409454 9.00273 0.993673 10.9077 2.09891 12.5402C3.98047 15.3193 6.3007 16.0405 8.22063 16.8084C9.32766 19.5653 11.5663 21.7502 14.3589 22.7846L13.4948 28.2812H13.3249C11.3864 28.2812 9.8093 29.8584 9.8093 31.7969V37.6562H8.63742C7.99023 37.6562 7.46555 38.1809 7.46555 38.8281C7.46555 39.4753 7.99023 40 8.63742 40H27.3874C28.0346 40 28.5593 39.4753 28.5593 38.8281C28.5593 38.1809 28.0346 37.6562 27.3874 37.6562H26.2155V31.7969C26.2155 29.8584 24.6384 28.2812 22.6999 28.2812H22.5301L21.666 22.7847C24.4627 21.7487 26.7038 19.5591 27.8092 16.7966C29.6229 16.0711 32.0003 15.3478 33.9012 12.5402C35.0064 10.9077 35.5906 9.00266 35.5906 7.03125C35.5905 4.44656 33.4877 2.34375 30.903 2.34375ZM7.4568 13.9787C4.59945 12.8357 2.7532 10.1087 2.7532 7.03125C2.7532 5.73891 3.80461 4.6875 5.09695 4.6875C6.3893 4.6875 7.4407 5.73891 7.4407 7.03125C7.4407 7.11367 7.44938 7.19398 7.46555 7.27156V12.8906C7.46555 13.2673 7.48578 13.6392 7.52453 14.0058L7.4568 13.9787ZM23.8718 37.6562H12.153V35.3125H23.8718V37.6562ZM22.6999 30.625C23.3461 30.625 23.8718 31.1507 23.8718 31.7969V32.9688H12.153V31.7969C12.153 31.1507 12.6788 30.625 13.3249 30.625C13.9607 30.625 21.2089 30.625 22.6999 30.625ZM15.8673 28.2812L16.6427 23.3487C17.0912 23.4071 17.5483 23.4375 18.0124 23.4375C18.4766 23.4375 18.9337 23.407 19.3821 23.3487L20.1576 28.2812H15.8673ZM26.2155 12.8906C26.2155 17.4138 22.5356 21.0938 18.0124 21.0938C13.4892 21.0938 9.8093 17.4138 9.8093 12.8906V7.03125H26.2155V12.8906ZM26.2155 4.6875H9.8093V2.34375H26.2155V4.6875ZM28.5431 13.9787L28.5015 13.9953C28.5395 13.6322 28.5592 13.2637 28.5592 12.8906V7.03125C28.5593 5.73891 29.6107 4.6875 30.903 4.6875C32.1954 4.6875 33.2468 5.73891 33.2468 7.03125C33.2468 10.1087 31.4005 12.8358 28.5431 13.9787Z\"\n                        fill=\"#121212\" \/>\n                <\/svg>\n                <div class=\"d-flex feature_inner_child\">\n                    <h3 class=\"feature_title\">High Quality<\/h3>\n                    <p class=\"feature_content\">4.9 Ratings<\/p>\n                <\/div>\n            <\/div>\n        <\/div>\n\n\n        <div class=\"col-md-4 col-sm-6\">\n            <div class=\"feature_inner\">\n                <svg width=\"40\" height=\"38\" viewBox=\"0 0 40 38\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n                    <path\n                        d=\"M36.8986 19.7347V1.51981C36.8986 0.869985 36.3718 0.343155 35.722 0.343155H4.19674C3.54691 0.343155 3.02008 0.869985 3.02008 1.51981V21.1867C2.45246 21.2694 1.89755 21.4898 1.40664 21.8542C-0.140899 22.9516 -0.506918 25.4073 0.789368 26.9219L6.08928 33.347C9.36996 37.1866 12.855 37.657 18.0359 37.657C22.4819 37.657 24.4696 37.6766 28.3443 36.7937L32.1173 35.8913C32.7291 36.7456 33.7003 37.2991 34.7922 37.2991H36.6508C38.4975 37.2991 40 35.7163 40 33.7708V23.2523C40.0001 21.3947 38.63 19.8688 36.8986 19.7347ZM31.6098 22.1551L30.042 21.3588C27.4642 20.0577 24.4839 20.0095 21.8655 21.2269C21.1511 21.5079 19.5929 22.4506 18.7847 22.4191H13.3445C11.54 22.4191 10.0718 23.8872 10.0718 25.6918V26.5499C10.0617 26.5392 10.0511 26.5291 10.0411 26.5183L6.15619 22.3014C5.9211 22.0462 5.65697 21.8326 5.37348 21.6613V9.98737H15.0027V14.3007C15.0027 14.9505 15.5295 15.4774 16.1794 15.4774H23.6042C24.254 15.4774 24.7808 14.9505 24.7808 14.3007V9.98737H34.5454V19.7346C33.1706 19.8408 32.0242 20.8243 31.6098 22.1551V22.1551ZM17.356 9.98737H22.4274V13.124H17.356V9.98737ZM34.5453 7.63405H24.7808V2.69647H34.5454V7.63405H34.5453ZM22.4275 2.69647V7.63413H17.356V2.69647H22.4275ZM15.0026 2.69647V7.63413H5.3734V2.69647H15.0026ZM27.7982 34.5046C24.2188 35.3244 22.0631 35.2912 18.0781 35.2912C13.2146 35.2912 10.8646 35.2126 7.90479 31.8494L2.60488 25.4243C1.683 24.2239 3.35276 22.8068 4.4254 23.8957L8.31034 28.1127C9.3371 29.1961 10.6291 29.7924 12.2216 29.8274H22.9926C23.6425 29.8274 24.1693 29.3006 24.1693 28.6508C24.1693 28.0009 23.6425 27.4741 22.9926 27.4741H12.425V25.6916C12.425 25.1847 12.8374 24.7723 13.3444 24.7723H18.7847C20.0103 24.86 21.7793 23.8367 22.8575 23.3607C24.8186 22.4489 27.0508 22.485 28.9789 23.4582L31.4432 24.7098V33.6327L27.7982 34.5046ZM37.6467 33.7707C37.6467 34.4186 37.2 34.9457 36.6509 34.9457H34.7922C34.2431 34.9457 33.7965 34.4186 33.7965 33.7707V23.2523C33.7965 22.6045 34.2432 22.0773 34.7922 22.0773H36.6509C37.2 22.0773 37.6467 22.6044 37.6467 23.2523V33.7707Z\"\n                        fill=\"#121212\" \/>\n                <\/svg>\n\n                <div class=\"d-flex feature_inner_child\">\n                    <h3 class=\"feature_title\">Customer Happiness<\/h3>\n                    <p class=\"feature_content\">Overall 99.99%<\/p>\n                <\/div>\n\n            <\/div>\n        <\/div>\n        <div class=\"col-md-4 col-sm-6\">\n            <div class=\"feature_inner\" style=\"border-right: 0px solid #8d2020!important;\">\n                <svg width=\"36\" height=\"40\" viewBox=\"0 0 36 40\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n                    <path\n                        d=\"M34.4624 15.9752C34.1995 7.12163 26.9161 -1.52588e-05 18 -1.52588e-05C9.08381 -1.52588e-05 1.80043 7.12163 1.53745 15.9752L0.352905 17.1598V25.1932L1.52938 26.3696V31.8431C1.52938 35.0434 4.13298 37.647 7.3333 37.647H8.79055C9.2762 39.0164 10.5839 40 12.1176 40H14.4706C16.0053 40 17.3137 39.015 17.7986 37.6442C17.8658 37.6454 17.9331 37.647 18 37.647C23.6814 37.647 28.4351 33.5987 29.5281 28.2353H32.6049L35.647 25.1932V17.1598L34.4624 15.9752ZM18 2.35293C24.9828 2.35293 30.7969 7.44932 31.9204 14.1176H29.5281C28.4351 8.75418 23.6814 4.70587 18 4.70587C12.3186 4.70587 7.56483 8.75418 6.47181 14.1176H4.07949C5.20302 7.44932 11.0171 2.35293 18 2.35293V2.35293ZM27.1139 14.1176C23.3109 14.1063 20.6246 14.3379 18.4098 11.1004L17.3344 9.52838L16.4102 11.1938C15.0635 13.6204 13.2499 14.1176 10.9411 14.1176H8.886C9.93346 10.0629 13.6225 7.05881 18 7.05881C22.3775 7.05881 26.0665 10.0629 27.1139 14.1176V14.1176ZM6.23526 25.8823H4.36961L2.70585 24.2186V18.1343L4.36961 16.4706H6.23526V25.8823ZM3.88232 31.8431V28.2353H6.46953C6.91244 30.4294 7.97212 32.4434 9.542 34.0611C9.21291 34.4127 8.95479 34.8311 8.79055 35.2941H7.3333C5.4304 35.2941 3.88232 33.746 3.88232 31.8431V31.8431ZM14.4706 37.647H12.1176C11.4688 37.647 10.9411 37.1194 10.9411 36.4706C10.9411 35.8219 11.4688 35.2941 12.1176 35.2941H14.4706C15.1193 35.2941 15.647 35.8219 15.647 36.4706C15.647 37.1194 15.1193 37.647 14.4706 37.647ZM27.4117 25.8823C27.4117 31.072 23.1896 35.2941 18 35.2941C17.9325 35.2941 17.8645 35.2928 17.7966 35.2912C17.3102 33.9234 16.0032 32.9412 14.4706 32.9412C12.0549 32.9465 12.0934 32.9291 11.7923 32.9568C9.74977 31.1665 8.5882 28.6165 8.5882 25.8823V16.4706H10.9411C13.0233 16.4706 15.5589 16.1273 17.5218 13.7384C20.1116 16.4524 23.2764 16.4706 26.1175 16.4706H27.4117V25.8823ZM33.2941 24.2186L31.6303 25.8823H29.7647V16.4706H31.6303L33.2941 18.1343V24.2186Z\"\n                        fill=\"#121212\" \/>\n                <\/svg>\n\n                <div class=\"d-flex feature_inner_child\">\n                    <h3 class=\"feature_title\">24\/7 Support<\/h3>\n                    <p class=\"feature_content\">Dedicated support<\/p>\n                <\/div>\n\n            <\/div>\n        <\/div>\n    <\/div>\n\n<\/div>\n\n<div class=\"container page-width app_section\">\n    <div class=\"row\">\n        <div class=\"col-md-6\">\n            <h2 class=\"service_title\" style=\"margin-bottom: 10px\">Zepto Product Personalizer<\/h2>\n            <p style=\"text-align: justify;\">Allow your customers to personalize and customize your product with image & color swatches, dropdown menus, buttons, text & monogram inputs, custom fonts & color selections, upload fields, and more. Use Conditional logic & Dynamic Pricing to create a complete product-building experience. Offer Live customization, increase customer engagement, and simplify customs orders.\n            <\/p>\n\n            <ul class=\"service_features\">\n                <li>Add Unlimited Product Options & Variant Options<\/li>\n                <li>Let your customers see a Live Preview of the product directly in store<\/li>\n                <li>Use Conditional logic to show & hide product options based on user selection<\/li>\n                <li>Make Price Increases depending on the user selection.<\/li>\n                <li>Offer 'Build Your Own Product' Experience for Multi-component custom products<\/li>\n            <\/ul>\n\n            <div class=\"call_to_action_btn\">\n                <a href=\"https:\/\/apps.shopify.com\/product-personalizer\" class=\"button cbtn\">Visit App\n                    <img class=\"right_arrow\"\n                        src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA\/wD\/AP+gvaeTAAAA2klEQVQ4je3SMUoDURSF4e9GQZRUVi5BrGzSWFgItiImwdLGGUOW4ApcQiSd5SQRbBQL2zS2LkPcwcyzEhS0eimE5G8P\/OdwuaxYUoZV21W191vUyhLXcU28KSeXixWnuMOHMDKYdr9HkSWGYtbRal6wIeLEqPdM7mIYd19FOkUjpXvF5ADCYNrVpBuRXbKDLbxbqw\/zF\/9B\/o1hUB1J8Yha49i4P89fXMw6UjwgRJwZ9+ewniUtp7uiecKmiPOvj8gXt1xItiWl294sy\/WDYdVWVPuLE674F3wCuDc1xfOIq9QAAAAASUVORK5CYII=\">\n                <\/a>\n            <\/div>\n\n        <\/div>\n        <div class=\"col-md-6\">\n                     <!-- 1. The <iframe> (video player) will replace this <div> tag. -->\n            <div class=\"iframe-container\">\n                <div id=\"player\"><\/div>\n            <\/div>\n            <script src=\"https:\/\/code.jquery.com\/jquery-3.5.1.min.js\"><\/script>\n            <script>\n                \/\/ 2. This code loads the IFrame Player API code asynchronously.\n                var tag = document.createElement('script');\n\n                tag.src = \"https:\/\/www.youtube.com\/iframe_api\";\n                var firstScriptTag = document.getElementsByTagName('script')[0];\n                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);\n\n                \/\/ 3. This function creates an <iframe> (and YouTube player)\n                \/\/    after the API code downloads.\n                var player;\n\n                $(function () {\n                    $('#youtubeImage').click(function () {\n                        console.log('clicked');\n                        player = new YT.Player('player', {\n                            width: '100%',\n                            videoId: 'cqjlMgZ6964',\n                            playerVars: {\n                                'autoplay': 1,\n                                'playsinline': 1\n                            },\n                            events: {\n                                'onReady': onPlayerReady\n                            }\n                        });\n                        $('.iframe_placeholder').hide();\n                    });\n                });              \n\n                \/\/ 4. The API will call this function when the video player is ready.\n                function onPlayerReady(event) {\n                    event.target.mute();\n                    event.target.playVideo();\n                }\n            <\/script>\n\n\n            <div class=\"iframe_placeholder\"\n                style=\"background-image: url('https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/09\/video-thumb.png'); background-repeat: no-repeat; background-size: cover; display: flex; flex-direction: column; justify-content: center;\">\n                <svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" id=\"youtubeImage\" aria-hidden=\"true\" focusable=\"false\"\n                    role=\"presentation\" class=\"icon icon-play\" fill=\"none\" viewBox=\"0 0 10 14\">\n                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\"\n                        d=\"M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z\"\n                        fill=\"currentColor\"><\/path>\n                <\/svg>\n            <\/div>\n        <\/div>\n    <\/div>\n<\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 0,
+                "padding_bottom": 56
+            }
+        },
+        "1656503053c400aaa3": {
+            "type": "custom-liquid",
+            "disabled": true,
+            "settings": {
+                "custom_liquid": "<style>\n  .feature-item {\n    margin: 0 auto;\n    background: #fafbff;\n    width: 49%;\n    margin-top: 8px;\n    text-align: center;\n    border-radius: 10px;\n    padding-bottom: 25px;\n}\n.feature-item img {\n    margin: 0 auto;\n    margin-top: 15px;\n}\nh3.feature_title {\n    font-size: 20px;\n    font-weight: 600;\n}\n<\/style>\n\n<div class=\"container page-width\">\n  <div class=\"row\">\n    <div class=\"col-md-6\" style=\"margin: 0; padding:0\">\n      <iframe width=\"100%\" height=\"413px\" src=\"https:\/\/www.youtube.com\/embed\/cqjlMgZ6964\">\n      <\/iframe>\n     <!-- <a href=\"https:\/\/apps.shopify.com\/product-personalizer\" target=\"_blank\"><img src=\"https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/pp.jpg\" alt=\"\" class=\"img-responsive app_image\" style=\"margin-top: 10px\"><\/a> -->\n    <\/div>\n \n    <div class=\"col-md-6\" style=\"padding-left: 50px\">\n      <!-- <h3 class=\"mb-3\" style=\"padding: 10px 10px; background-color: #587898; color: white;\">Zepto Product Personalizer\n      <\/h3> -->\n      <h2 class=\"service_title\" style=\"margin-top: 0px\">Zepto Product Personalizer<\/h2>\n      <p style=\"text-align: justify;\">Exclusive Shopify App for Live Preview, with unlimited customization options and more. Reduce delivery time by automating the customer preference right from your store. <\/p>\n      \n      <div class=\"row\">\n          <div class=\"feature-item\">\n            <img src=\"https:\/\/img.icons8.com\/color\/48\/000000\/last-24-hours--v1.png\" \/>  \n            <h3 class=\"feature_title\">24\/7<\/h3>\n          <\/div>\n          <div class=\"feature-item\">\n            <img src=\"https:\/\/img.icons8.com\/color\/48\/000000\/filled-star--v1.png\" \/>\n             <h3 class=\"feature_title\">4.8 Rating<\/h3>\n          <\/div>\n      <\/div>\n      <div class=\"row\">\n          <div class=\"feature-item\">\n            <img src=\"https:\/\/img.icons8.com\/color\/48\/000000\/time.png\" \/> \n            <h3 class=\"feature_title\">Customer Support<\/h3>\n          <\/div>\n          <div class=\"feature-item\">\n            <img src=\"https:\/\/img.icons8.com\/color\/48\/000000\/customer-support.png\" \/> \n            <h3 class=\"feature_title\">Customer Happiness<\/h3>\n          <\/div>\n      <\/div>\n    <\/div>    \n  <\/div> \n<\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 100,
+                "padding_bottom": 100
+            }
+        },
+        "rich_text": {
+            "type": "rich-text",
+            "disabled": true,
+            "blocks": {
+                "heading": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Shopify Expert Services",
+                        "heading_size": "h1"
+                    }
+                },
+                "text": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p><strong>If you're ready to design, develop or scale on Shopify we have the solution.<\/strong><\/p>"
+                    }
+                }
+            },
+            "block_order": [
+                "heading",
+                "text"
+            ],
+            "settings": {
+                "color_scheme": "background-1",
+                "full_width": true,
+                "padding_top": 100,
+                "padding_bottom": 0
+            }
+        },
+        "featured_collection": {
+            "type": "featured-collection",
+            "disabled": true,
+            "settings": {
+                "title": "",
+                "heading_size": "h2",
+                "description": "",
+                "show_description": false,
+                "description_style": "body",
+                "collection": "all",
+                "products_to_show": 6,
+                "columns_desktop": 3,
+                "full_width": false,
+                "show_view_all": false,
+                "view_all_style": "solid",
+                "enable_desktop_slider": false,
+                "color_scheme": "background-1",
+                "image_ratio": "adapt",
+                "show_secondary_image": true,
+                "show_vendor": false,
+                "show_rating": false,
+                "enable_quick_add": false,
+                "columns_mobile": "2",
+                "swipe_on_mobile": false,
+                "padding_top": 16,
+                "padding_bottom": 36
+            }
+        },
+        "16565745198b7289f2": {
+            "type": "rich-text",
+            "blocks": {
+                "16565745190abdfe83-0": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Scale Up Your E-Commerce Business with Us",
+                        "heading_size": "h1"
+                    }
+                },
+                "16565745190abdfe83-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>We have given years to polish our craft, and now we’re here to offer it to you. From small stores to Shopify Plus projects, we are great in designing and implementing the best functionality for you.<\/p>"
+                    }
+                }
+            },
+            "block_order": [
+                "16565745190abdfe83-0",
+                "16565745190abdfe83-1"
+            ],
+            "settings": {
+                "color_scheme": "background-1",
+                "full_width": false,
+                "padding_top": 52,
+                "padding_bottom": 52
+            }
+        },
+        "1656574536f35221a8": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<div class=\"container page-width\">\n    <div class=\"row\">\n        <div class=\"col-md-6\" style=\"margin: 0; padding:0\">\n            <img src=\"https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/Frame-2308-4.png\"\n                loading=\"lazy\" alt=\"\">\n        <\/div>\n\n        <div class=\"col-md-6\" style=\"padding: 0px 25px\">\n            <h2 class=\"service_title\">Shopify Theme Development<\/h2>\n            <p class=\"service_desc\">A team of experienced UI\/UX designers and developers will create a user-friendly and interactive theme for your Shopify store devoted to all requirements and your unique business needs.<\/p>\n\n            <div class=\"service_features\">\n                <ul class=\"service_features\">\n                    <li>Modification on existing Shopify Theme (Fixing Bugs or Errors)<\/li>\n                    <li>Custom Template for Product or Collection Page<\/li>\n                    <li>Enhance Functionality to your Existing Theme<\/li>\n                    <li>Dynamic Blocks, Custom Section, Newsletter and Signup Popup Design<\/li>\n                    <li>Alignment or Responsiveness Issues Fixing<\/li>\n                <\/ul>\n            <\/div>\n\n            <div class=\"call_to_action_btn\"><a href=\"\/products\/custom-shopify-theme-development\" class=\"button cbtn\">Learn More <img\n                        class=\"right_arrow\"                 src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA\/wD\/AP+gvaeTAAAA2klEQVQ4je3SMUoDURSF4e9GQZRUVi5BrGzSWFgItiImwdLGGUOW4ApcQiSd5SQRbBQL2zS2LkPcwcyzEhS0eimE5G8P\/OdwuaxYUoZV21W191vUyhLXcU28KSeXixWnuMOHMDKYdr9HkSWGYtbRal6wIeLEqPdM7mIYd19FOkUjpXvF5ADCYNrVpBuRXbKDLbxbqw\/zF\/9B\/o1hUB1J8Yha49i4P89fXMw6UjwgRJwZ9+ewniUtp7uiecKmiPOvj8gXt1xItiWl294sy\/WDYdVWVPuLE674F3wCuDc1xfOIq9QAAAAASUVORK5CYII=\"><\/a>\n            <\/div>\n\n        <\/div>\n    <\/div>\n<\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "16565765040c5c78fc": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<div class=\"container page-width\">\n  <div class=\"row\">\n     <div class=\"col-md-6 md_d_none\" style=\"margin: 0; padding:0\" >\n      <img src=\"https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/Group.png\" loading=\"lazy\" alt=\"\">\n    <\/div>\n\n    <div class=\"col-md-6\" style=\"padding: 0px 25px\">\n      <h2 class=\"service_title\">Custom Shopify App Development<\/h2>\n      <p class=\"service_desc\">We are experts in accomplishing your challenges and transforming your ideas into robust features and feature-rich Shopify custom applications. Let&#8217;s begin developing your Shopify application that may transform your store exactly as you want. \n        <a href=\"https:\/\/apps.shopify.com\/product-personalizer\" target=\"_blank\" style=\"text-decoration: underline!important; display: none\">Be confident by checking our \"Product Personalizer\" App featured in Shopify. <\/a>  \n    <\/p>\n      \n      <div class=\"service_features\">          \n          <ul class=\"service_features\">\n            <li>Specialised in both Public & Private Shopify App.<\/li>\n            <li>Reconfigure and Customise Existing Shopify Apps<\/li>\n            <li>Third party API integration: Order API, Billing API, Discount API etc.<\/li>\n            <li>Sales & Discount Mangement, Data Reporting & Analysis Apps<\/li>\n            <li>App Development with Nodejs, Reactjs or PHP<\/li>\n            <\/ul>\n      <\/div>\n      <div class=\"call_to_action_btn\"><a href=\"\/products\/shopify-app-development\" class=\"button cbtn\">Learn More <img class=\"right_arrow\" src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA\/wD\/AP+gvaeTAAAA2klEQVQ4je3SMUoDURSF4e9GQZRUVi5BrGzSWFgItiImwdLGGUOW4ApcQiSd5SQRbBQL2zS2LkPcwcyzEhS0eimE5G8P\/OdwuaxYUoZV21W191vUyhLXcU28KSeXixWnuMOHMDKYdr9HkSWGYtbRal6wIeLEqPdM7mIYd19FOkUjpXvF5ADCYNrVpBuRXbKDLbxbqw\/zF\/9B\/o1hUB1J8Yha49i4P89fXMw6UjwgRJwZ9+ewniUtp7uiecKmiPOvj8gXt1xItiWl294sy\/WDYdVWVPuLE674F3wCuDc1xfOIq9QAAAAASUVORK5CYII=\"><\/a><\/div>\n    <\/div>    \n    <div class=\"col-md-6 sm_d_none\" style=\"margin: 0; padding:0\" >\n      <img src=\"https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/Group.png\" loading=\"lazy\" alt=\"\">\n    <\/div>\n  <\/div> \n<\/div>",
+                "color_scheme": "background-2",
+                "padding_top": 100,
+                "padding_bottom": 52
+            }
+        },
+        "1656582417e81422e8": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<div class=\"container page-width\">\n    <div class=\"row\">\n      <div class=\"col-md-6\" style=\"margin: 0; padding:0\">\n        <img src=\"https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/Frame-2308-1.png\" loading=\"lazy\" alt=\"\" style=\"margin-top: 50px;\">\n      <\/div>\n   \n      <div class=\"col-md-6\" style=\"padding: 0px 25px\">\n        <h2 class=\"service_title\">Custom Ecommerce Development<\/h2>\n        <p class=\"service_desc\">We can provide you with eCommerce solutions and design your store, which is unique to your business and follows a thorough analysis of your business requirements. At Zepto, we research a target audience for you and plan customer experience actively to achieve maximum ROI for custom e-commerce web development. With us, you get\n<\/p>\n        \n        <div class=\"service_features\">\n            <ul class=\"service_features\">\n              <li>Simple manipulation of products and categories<\/li>\n              <li>User management<\/li>\n              <li>Payment and order overview<\/li>\n              <li>User security<\/li>\n              <li>Great social network integration<\/li>\n              <li>Overview of bestselling products<\/li>\n              <li>Possibility of adding discounts and special offers<\/li>\n              <li>Price and category sorting<\/li>\n            <\/ul>\n        <\/div>\n   \n        <div class=\"call_to_action_btn\"><a href=\"\/pages\/custom-ecommerce\" class=\"button cbtn\">Learn More <img class=\"right_arrow\" src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA\/wD\/AP+gvaeTAAAA2klEQVQ4je3SMUoDURSF4e9GQZRUVi5BrGzSWFgItiImwdLGGUOW4ApcQiSd5SQRbBQL2zS2LkPcwcyzEhS0eimE5G8P\/OdwuaxYUoZV21W191vUyhLXcU28KSeXixWnuMOHMDKYdr9HkSWGYtbRal6wIeLEqPdM7mIYd19FOkUjpXvF5ADCYNrVpBuRXbKDLbxbqw\/zF\/9B\/o1hUB1J8Yha49i4P89fXMw6UjwgRJwZ9+ewniUtp7uiecKmiPOvj8gXt1xItiWl294sy\/WDYdVWVPuLE674F3wCuDc1xfOIq9QAAAAASUVORK5CYII=\"><\/a><\/div>\n  \n      <\/div>    \n    <\/div> \n  <\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "1655879992896ea2a7": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<style>\n  h1.display-4.text-white.__title {\n      color: #000!important;\n  }\n.__title h1 {\nfont-weight: 600!important;\n color: #000;\n}\n      h1.display-4.text-white.__title {\n        font-size: 42px;\n        color: #000;\n      }\n      .bg-dark {\n          --bs-bg-opacity: 1;\n          background-color:#fff!important;\n          text-align:center;\n      }\n <\/style>\n    \n    <div class=\"py-lg-16 py-10 bg-dark call_to_action\" style=\"background: url(https:\/\/www.productpersonalizer.com\/docs\/wp-content\/uploads\/2022\/07\/Section-05.png)no-repeat; background-position: top center;\">\n      <div class=\"container\">\n        <!-- row -->\n        <div class=\"row justify-content-center text-center\" style=\"text-align:center\">\n          <div class=\"col-md-12 col-12\">\n            <!-- heading -->\n            <h1 class=\"display-4 text-white __title\" style=\"color:#fff!important;text-transform: uppercase; margin-bottom:30px;\">Let's start your first project<\/h1>\n<!-- button -->\n<div class=\"d-grid d-md-block\">\n              <!-- <a href=\"\/pages\/get-a-quote\" class=\"btn btn-primary mb-2 mb-md-0\" style=\"background-color: #000; margin-top: -25px\">Start a Project<\/a> -->\n              \n<a href=\"\/collections\/all\" type=\"submit\" class=\"button call2action\"> All Services<\/a>\n\n<a href=\"\/pages\/get-a-quote\" class=\"button call2action\">Start a Project<\/a>\n\n<!-- <button id=\"quoteModal\" \n class=\"button call2action\" style=\"width: 250px\">\nStart a Project<\/button> -->\n  \n            <\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n    <\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 0,
+                "padding_bottom": 0
+            }
+        },
+        "1658920897de84c6a9": {
+            "type": "custom-liquid",
+            "settings": {
+                "custom_liquid": "<link rel=\"stylesheet\" href=\"https:\/\/maxcdn.bootstrapcdn.com\/font-awesome\/4.7.0\/css\/font-awesome.min.css\">\n<script src=\"https:\/\/code.jquery.com\/jquery-3.5.1.min.js\"><\/script>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/popper.js@1.16.0\/dist\/umd\/popper.min.js\"><\/script>\n<script src=\"https:\/\/stackpath.bootstrapcdn.com\/bootstrap\/4.5.0\/js\/bootstrap.min.js\"><\/script>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/popper.js@1.16.0\/dist\/umd\/popper.min.js\"><\/script>\n<script src=\"https:\/\/stackpath.bootstrapcdn.com\/bootstrap\/4.5.0\/js\/bootstrap.min.js\"><\/script>\n\n<style>\n @media only screen and (max-device-width : 768px)  \n{\n\t.carousel {\n\t\twidth: 100%!important;\n\t\tmargin: 0 auto;\n\t\tpadding-bottom: 50px;\n\t}\n\tspan.left_quote {\n\t\tfont-size: 174px!important;\n\t\tline-height: 347px!important;\n\t}\n}\n.carousel {\n    width: 60%;\n    margin: 0 auto;\n    padding-bottom: 50px;\n}\n.carousel .carousel-item {\n\tcolor: #999;\n\tfont-size: 14px;\n\ttext-align: center;\n\toverflow: hidden;\n\tmin-height: 340px;\n}\n.carousel .carousel-item a {\n\tcolor: #eb7245;\n}\n.carousel .img-box {\n\twidth: 145px;\n\theight: 145px;\n\tmargin: 0 auto;\n\tborder-radius: 50%;\n}\n.carousel .img-box img {\n\twidth: 100%;\n\theight: 100%;\n\tdisplay: block;\n\tborder-radius: 50%;\n}\n.carousel .testimonial {\t\n\tpadding: 30px 0 10px;\n}\n.carousel .overview {\t\n\ttext-align: center;\n\tpadding-bottom: 5px;\n}\n.carousel .overview b {\n\tcolor: #333;\n\tfont-size: 15px;\n\ttext-transform: uppercase;\n\tdisplay: block;\t\n\tpadding-bottom: 5px;\n}\n.carousel .star-rating i {\n\tfont-size: 18px;\n\tcolor: #ffdc12;\n}\n.carousel-control-prev, .carousel-control-next {\n\twidth: 30px;\n\theight: 30px;\n\tborder-radius: 50%;\n\tbackground: #999;\n\ttext-shadow: none;\n\ttop: 400px;\n}\n.carousel-control-prev i, .carousel-control-next i {\n\tfont-size: 20px;\n\tmargin-right: 2px;\n}\n.carousel-control-prev {\n\tleft: auto;\n}\n.carousel-control-next i {\n\tmargin-right: -2px;\n}\n.carousel .carousel-indicators {\n\tbottom: 15px;\n}\n.carousel-indicators li, .carousel-indicators li.active {\n\twidth: 11px;\n\theight: 11px;\n\tmargin: 1px 5px;\n\tborder-radius: 50%;\n}\n.carousel-indicators li {\t\n\tbackground: #e2e2e2;\n\tborder: none;\n}\n.carousel-indicators li.active {\t\t\n\tbackground: #888;\t\t\n}\nspan.left_quote{\n    position: absolute;\nwidth: 114px;\nheight: 138px;\nleft: 0px;\ntop: 0px;\n\nfont-family: 'Archivo';\nfont-style: normal;\nfont-weight: 400;\nfont-size: 288px;\nline-height: 313px;\ntext-align: center;\n\ncolor: #EFF4F5;\n\n}\n\nspan.right_quote{\n    position: absolute;\nwidth: 114px;\nheight: 138px;\nleft: 1213px;\ntop: 376px;\n\nfont-family: 'Archivo';\nfont-style: normal;\nfont-weight: 400;\nfont-size: 288px;\nline-height: 313px;\ntext-align: center;\n\ncolor: #EFF4F5;\n\ntransform: rotate(-180deg);\n}\n<\/style>\n\n\n<div class=\"rich-text__blocks\"><h2 class=\"h1 text-center\" style=\"margin-bottom: 50px\">Customers Feedback<\/h2>\n<\/div>\n\n\n<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n\t<!-- Carousel indicators -->\n\t<ol class=\"carousel-indicators\">\n\t\t<li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"><\/li>\n\t\t<li data-target=\"#myCarousel\" data-slide-to=\"1\"><\/li>\n\t\t<li data-target=\"#myCarousel\" data-slide-to=\"2\"><\/li>\n\t<\/ol>   \n\t<!-- Wrapper for carousel items -->\n\t<div class=\"carousel-inner\">\t\t\n\t\t<div class=\"carousel-item active\">\n\t\t\t<div class=\"img-box\"><img class=\"p-3 border border-primary\" src=\"https:\/\/img.icons8.com\/officel\/100\/000000\/person-male.png\"\/><\/div>\n\t\t\t<p class=\"testimonial\"><span class=\"left_quote\">“<\/span>This is such an amazing app, I am so pleased for all the help the support the guys have given me, I'm not very tech savy and they answered all my questions quickly and clearly. Sending me all the help I needed.\n\t\t\t\tI have been using the free trail to get used to how it works but will be continuing using this app in my website. It's very user friendly - for us and the customers, 5 stars from me. <span class=\"right_quote\">“<\/span><\/p>\n\t\t\t\t<p class=\"overview\">\n\t\t\t\t\t<a href=\"#\">Bakestop<\/a>\n\t\t\t\t\t<b>Australia<\/b>\n\t\t\t\t<\/p>\n\t\t\t<div class=\"star-rating\">\n\t\t\t\t<ul class=\"list-inline\">\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t<\/ul>\n\t\t\t<\/div>\n\t\t<\/div>\n\t\t<div class=\"carousel-item\">\n\t\t\t<div class=\"img-box\"><img class=\"p-3 border border-primary\" src=\"https:\/\/img.icons8.com\/officel\/100\/000000\/person-male.png\"\/><\/div>\n\t\t\t<p class=\"testimonial\"><span class=\"left_quote\">“<\/span>This application helps me to let customers make their own text neon signs. The app is very extensive and there is always service available if you have any questions. In addition, there are numerous Youtube videos available to help you on your way to building this app. Ideal if you sell customized products.<span class=\"right_quote\">“<\/span><\/p>\n\t\t\t<p class=\"overview\">\n\t\t\t\t<a href=\"#\">Neonlampen.nl<\/a>\n\t\t\t\t<b>Netherlands<\/b>\n\t\t\t<\/p>\n\t\t\t<div class=\"star-rating\">\n\t\t\t\t<ul class=\"list-inline\">\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<!-- <li class=\"list-inline-item\"><i class=\"fa fa-star-o\"><\/i><\/li> -->\n\t\t\t\t<\/ul>\n\t\t\t<\/div>\n\t\t<\/div>\n\t\t<div class=\"carousel-item\">\n\t\t\t<div class=\"img-box\"><img class=\"p-3 border border-primary\" src=\"https:\/\/img.icons8.com\/officel\/100\/000000\/person-male.png\"\/><\/div>\n\t\t\t<p class=\"testimonial\"><span class=\"left_quote\">“<\/span>Exactly the app I needed. Had an issue with changing the variant or style of the items on my website and the customer support reached out and helped me resolve my issue in 1 email. I recommend.<span class=\"right_quote\">“<\/span><\/p>\n\t\t\t<p class=\"overview\">\n\t\t\t\t<a href=\"#\">Bling Discount<\/a>\n\t\t\t\t<b>United States<\/b>\n\t\t\t<\/p>\n\t\t\t<div class=\"star-rating\">\n\t\t\t\t<ul class=\"list-inline\">\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t\t<li class=\"list-inline-item\"><i class=\"fa fa-star\"><\/i><\/li>\n\t\t\t\t<\/ul>\n\t\t\t<\/div>\n\t\t<\/div>\t\t\n\t<\/div>\n\t<!-- Carousel controls -->\n\t<a class=\"carousel-control-prev\" href=\"#myCarousel\" data-slide=\"prev\">\n\t\t<i class=\"fa fa-angle-left\"><\/i>\n\t<\/a>\n\t<a class=\"carousel-control-next\" href=\"#myCarousel\" data-slide=\"next\">\n\t\t<i class=\"fa fa-angle-right\"><\/i>\n\t<\/a>\n<\/div>",
+                "color_scheme": "background-1",
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        }
+    },
+    "order": [
+        "image_banner",
+        "16565739954036687d",
+        "16557265113e8b854e",
+        "multicolumn",
+        "165803861970f6911d",
+        "1656503053c400aaa3",
+        "rich_text",
+        "featured_collection",
+        "16565745198b7289f2",
+        "1656574536f35221a8",
+        "16565765040c5c78fc",
+        "1656582417e81422e8",
+        "1655879992896ea2a7",
+        "1658920897de84c6a9"
+    ]
+}
