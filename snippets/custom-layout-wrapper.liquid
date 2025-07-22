@@ -16,6 +16,12 @@
 
 <div class="custom-wrapper color-{{ section.settings.color_scheme }} gradient">
   <div class="section-{{ section.id }}-padding">
-    {{ content }}
+    {% if content != blank %}
+      {{ content }}
+    {% endif %}
+
+    {% if section.settings.custom_liquid != blank %}
+      {{ section.settings.custom_liquid }}
+    {% endif %}
   </div>
 </div>

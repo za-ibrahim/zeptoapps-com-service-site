@@ -1,0 +1,1065 @@
+{% capture section_content %}
+<style>
+  :root {
+    --primary-color: {{ section.settings.primary_color | default: '#2563eb' }};
+    --secondary-color: {{ section.settings.secondary_color | default: '#059669' }};
+    --accent-color: {{ section.settings.accent_color | default: '#fbbf24' }};
+    --text-color: {{ section.settings.text_color | default: '#1f2937' }};
+    --text-light: {{ section.settings.text_light_color | default: '#6b7280' }};
+    --background-overlay: {{ section.settings.background_overlay_color | default: 'rgba(74, 144, 226, 0.02)' }};
+    --card-background: {{ section.settings.card_background_color | default: '#ffffff' }};
+  }
+
+  .client-review-section {
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    background: var(--gradient-background);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .client-review-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .client-review-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .client-review-title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  .client-review-subtitle {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .reviews-slider-container {
+    position: relative;
+    margin-bottom: 50px;
+  }
+
+  .reviews-slider {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .reviews-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    gap: 30px;
+  }
+
+  .review-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    .review-slide {
+      min-width: calc(50% - 15px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .review-slide {
+      min-width: calc(33.333% - 20px);
+    }
+  }
+
+  .review-card {
+    user-select: none;
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 16px 16px 0 0;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .review-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+    border: 3px solid #f1f5f9;
+  }
+
+  .review-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 16px;
+  }
+
+  .review-author-info h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: var(--text-color);
+  }
+
+  .review-author-position {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .review-rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+
+  .star {
+    width: 20px;
+    height: 20px;
+    fill: var(--accent-color);
+  }
+
+  .star.empty {
+    fill: #e5e7eb;
+  }
+
+  .review-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-style: italic;
+    position: relative;
+    flex-grow: 1;
+  }
+
+  .review-text::before {
+    content: '"';
+    font-size: 60px;
+    color: var(--primary-color);
+    opacity: 0.1;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-family: Georgia, serif;
+  }
+
+  .review-date {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: right;
+    margin-top: auto;
+  }
+
+  /* Navigation Buttons */
+  .slider-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .nav-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 20px;
+  }
+
+  .nav-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+  }
+
+  .nav-btn:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: scale(1);
+  }
+
+  /* Pagination Dots */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+  }
+
+  /* Touch/Swipe indicators */
+  .reviews-slider {
+    cursor: grab;
+  }
+
+  .reviews-slider:active {
+    cursor: grabbing;
+  }
+
+  .review-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .review-slide {
+      min-width: 100% !important;
+    }
+    
+    .review-card {
+      padding: 24px;
+    }
+    
+    .client-review-section {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    
+    .review-stats {
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .review-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .review-avatar,
+    .review-avatar-placeholder {
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+
+    .slider-nav {
+      gap: 15px;
+    }
+
+    .review-stats {
+      gap: 30px;
+    }
+  }
+
+  /* Animation for scroll reveal */
+  .review-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.6s ease forwards;
+  }
+
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Auto-play indicator */
+  .autoplay-progress {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .autoplay-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 2px;
+    animation: autoplayProgress var(--autoplay-duration, 5000ms) linear infinite;
+  }
+
+  @keyframes autoplayProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+</style>
+
+<section class="client-review-section color-{{ section.settings.color_scheme }}">
+  <div class="client-review-container">
+    {% if section.settings.heading != blank %}
+      <div class="client-review-header">
+        <h2 class="client-review-title">{{ section.settings.heading }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="client-review-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="reviews-slider-container">
+        <div class="reviews-slider" id="reviews-slider">
+          <div class="reviews-track" id="reviews-track">
+            {% for block in section.blocks %}
+              <div class="review-slide" {{ block.shopify_attributes }}>
+                <div class="review-card">
+                  <div class="review-header">
+                    {% if block.settings.avatar != blank %}
+                      <img src="{{ block.settings.avatar | image_url: width: 120 }}" 
+                           alt="{{ block.settings.author_name }}" 
+                           class="review-avatar"
+                           width="60"
+                           height="60"
+                           loading="lazy">
+                    {% else %}
+                      <div class="review-avatar-placeholder">
+                        {{ block.settings.author_name | slice: 0 | upcase }}
+                      </div>
+                    {% endif %}
+                    <div class="review-author-info">
+                      <h4>{{ block.settings.author_name | default: 'Anonymous' }}</h4>
+                      {% if block.settings.author_position != blank %}
+                        <p class="review-author-position">{{ block.settings.author_position }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  {% if block.settings.rating > 0 %}
+                    <div class="review-rating">
+                      {% for i in (1..5) %}
+                        {% if i <= block.settings.rating %}
+                          <svg class="star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        {% else %}
+                          <svg class="star empty" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.review_text != blank %}
+                    <div class="review-text">
+                      {{ block.settings.review_text }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.review_date != blank %}
+                    <div class="review-date">
+                      {{ block.settings.review_date }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if section.blocks.size > 1 %}
+          <div class="slider-nav">
+            <button class="nav-btn prev-btn" id="prev-btn" aria-label="Previous review">‹</button>
+            <div class="slider-dots" id="slider-dots">
+              {% for block in section.blocks %}
+                <div class="dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></div>
+              {% endfor %}
+            </div>
+            <button class="nav-btn next-btn" id="next-btn" aria-label="Next review">›</button>
+          </div>
+          {% if section.settings.autoplay %}
+            <div class="autoplay-progress" style="--autoplay-duration: {{ section.settings.autoplay_speed }}ms;"></div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_stats %}
+      <div class="review-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{ section.settings.total_reviews | default: '150' }}+</span>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ section.settings.average_rating | default: '4.9' }}</span>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ section.settings.satisfaction_rate | default: '98' }}%</span>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('reviews-slider');
+    const track = document.getElementById('reviews-track');
+    const slides = document.querySelectorAll('.review-slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dots = document.querySelectorAll('.dot');
+    const autoplayProgress = document.querySelector('.autoplay-progress');
+    
+    if (!slider || !track || slides.length === 0) return;
+
+    let currentSlide = 0;
+    let slidesPerView = 1;
+    let autoplayInterval;
+    let isAutoplayEnabled = {{ section.settings.autoplay | json }};
+    let autoplaySpeed = {{ section.settings.autoplay_speed | default: 5000 }};
+    
+    // Touch/swipe variables
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startTransform = 0;
+
+    // Calculate slides per view based on screen size
+    function calculateSlidesPerView() {
+      const containerWidth = slider.offsetWidth;
+      if (containerWidth >= 1024) {
+        slidesPerView = Math.min(3, slides.length);
+      } else if (containerWidth >= 768) {
+        slidesPerView = Math.min(2, slides.length);
+      } else {
+        slidesPerView = 1;
+      }
+    }
+
+    // Update slider position
+    function updateSlider(animate = true) {
+      const slideWidth = 100 / slidesPerView;
+      const translateX = -(currentSlide * slideWidth);
+      
+      if (animate) {
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      } else {
+        track.style.transition = 'none';
+      }
+      
+      track.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+      
+      // Update nav buttons
+      if (prevBtn && nextBtn) {
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= slides.length - slidesPerView;
+      }
+    }
+
+    // Go to specific slide
+    function goToSlide(slideIndex, animate = true) {
+      const maxSlide = Math.max(0, slides.length - slidesPerView);
+      currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
+      updateSlider(animate);
+    }
+
+    // Next slide
+    function nextSlide() {
+      if (currentSlide < slides.length - slidesPerView) {
+        goToSlide(currentSlide + 1);
+      } else if (isAutoplayEnabled) {
+        // Loop back to start for autoplay
+        goToSlide(0);
+      }
+    }
+
+    // Previous slide
+    function prevSlide() {
+      if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+      }
+    }
+
+    // Autoplay functionality
+    function startAutoplay() {
+      if (!isAutoplayEnabled || slides.length <= slidesPerView) return;
+      
+      stopAutoplay();
+      autoplayInterval = setInterval(nextSlide, autoplaySpeed);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    }
+
+    // Touch/Mouse events for swiping
+    function handleStart(e) {
+      isDragging = true;
+      startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+      currentX = startX;
+      
+      const transform = track.style.transform;
+      const matrix = new DOMMatrix(transform);
+      startTransform = matrix.m41;
+      
+      track.style.transition = 'none';
+      slider.style.cursor = 'grabbing';
+      
+      stopAutoplay();
+    }
+
+    function handleMove(e) {
+      if (!isDragging) return;
+      
+      e.preventDefault();
+      currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+      const diff = currentX - startX;
+      const percentage = (diff / slider.offsetWidth) * 100;
+      
+      track.style.transform = `translateX(${startTransform + percentage}px)`;
+    }
+
+    function handleEnd() {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      slider.style.cursor = 'grab';
+      
+      const diff = currentX - startX;
+      const threshold = slider.offsetWidth * 0.2; // 20% threshold
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0 && currentSlide > 0) {
+          prevSlide();
+        } else if (diff < 0 && currentSlide < slides.length - slidesPerView) {
+          nextSlide();
+        } else {
+          updateSlider();
+        }
+      } else {
+        updateSlider();
+      }
+      
+      if (isAutoplayEnabled) {
+        setTimeout(startAutoplay, 1000); // Restart autoplay after 1 second
+      }
+    }
+
+    // Event listeners
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+        stopAutoplay();
+        if (isAutoplayEnabled) {
+          setTimeout(startAutoplay, 2000);
+        }
+      });
+    });
+
+    // Touch events
+    slider.addEventListener('touchstart', handleStart, { passive: false });
+    slider.addEventListener('touchmove', handleMove, { passive: false });
+    slider.addEventListener('touchend', handleEnd);
+
+    // Mouse events
+    slider.addEventListener('mousedown', handleStart);
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleEnd);
+
+    // Prevent context menu on long press
+    slider.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Pause autoplay on hover
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', () => {
+      if (isAutoplayEnabled) startAutoplay();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (slider.matches(':hover') || document.activeElement.closest('.reviews-slider-container')) {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          stopAutoplay();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          stopAutoplay();
+        }
+      }
+    });
+
+    // Resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        calculateSlidesPerView();
+        goToSlide(0, false);
+      }, 100);
+    });
+
+    // Initialize
+    calculateSlidesPerView();
+    updateSlider(false);
+    
+    // Start autoplay
+    if (isAutoplayEnabled && slides.length > slidesPerView) {
+      startAutoplay();
+    }
+
+    // Animate cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.review-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, index * 100);
+          });
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(slider);
+
+    // Animate stats counter on scroll
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target;
+          const finalValue = number.textContent.replace(/[^\d.]/g, '');
+          const isPercentage = number.textContent.includes('%');
+          const isPlus = number.textContent.includes('+');
+          
+          if (finalValue && !isNaN(finalValue)) {
+            animateCounter(number, 0, parseFloat(finalValue), 2000, isPercentage, isPlus);
+          }
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(stat => {
+      statsObserver.observe(stat);
+    });
+
+    function animateCounter(element, start, end, duration, isPercentage = false, isPlus = false) {
+      const startTimestamp = performance.now();
+      
+      function step(timestamp) {
+        const elapsed = timestamp - startTimestamp;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        
+        const current = start + (end - start) * easeOutCubic;
+        let displayValue = Math.round(current * 10) / 10;
+        
+        if (end < 10 && !isPercentage) {
+          displayValue = Math.round(current * 10) / 10;
+        } else {
+          displayValue = Math.round(current);
+        }
+        
+        element.textContent = displayValue + (isPercentage ? '%' : '') + (isPlus ? '+' : '');
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+      
+      requestAnimationFrame(step);
+    }
+  });
+</script>
+{% endcapture %}
+
+{% render 'custom-layout-wrapper', content: section_content %}
+
+{% schema %}
+{
+  "name": "Client Review",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What Our Clients Say",
+      "info": "Main heading for the review section"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Don't just take our word for it - see what our satisfied clients have to say about their experience working with us.",
+      "info": "Optional subtitle text below the main heading"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#2563eb",
+      "info": "Main brand color used for gradients and accents"
+    },
+    {
+      "type": "color",
+      "id": "secondary_color",
+      "label": "Secondary Color",
+      "default": "#059669",
+      "info": "Secondary color for gradients and accents"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#fbbf24",
+      "info": "Color for stars and highlights"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1f2937",
+      "info": "Main text color"
+    },
+    {
+      "type": "color",
+      "id": "text_light_color",
+      "label": "Light Text Color",
+      "default": "#6b7280",
+      "info": "Color for secondary text and subtitles"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background",
+      "default": "#ffffff",
+      "info": "Background color for review cards"
+    },
+    {
+      "type": "color",
+      "id": "background_overlay_color",
+      "label": "Background Overlay",
+      "default": "rgba(74, 144, 226, 0.02)",
+      "info": "Subtle overlay color for the section background"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": true,
+      "info": "Automatically advance slides"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3000,
+      "max": 10000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Autoplay Speed",
+      "default": 5000,
+      "info": "Time between slide transitions in milliseconds"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "Statistics Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Statistics",
+      "default": true,
+      "info": "Display client statistics at the bottom of the section"
+    },
+    {
+      "type": "number",
+      "id": "total_reviews",
+      "label": "Total Reviews Count",
+      "default": 150,
+      "info": "Number to display for total reviews statistic"
+    },
+    {
+      "type": "text",
+      "id": "average_rating",
+      "label": "Average Rating",
+      "default": "4.9",
+      "info": "Average rating to display (e.g., 4.9)"
+    },
+    {
+      "type": "number",
+      "id": "satisfaction_rate",
+      "label": "Satisfaction Rate %",
+      "default": 98,
+      "info": "Satisfaction percentage (without % symbol)"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Client Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "John Doe",
+          "info": "Name of the person leaving the review"
+        },
+        {
+          "type": "text",
+          "id": "author_position",
+          "label": "Author Position/Company",
+          "default": "CEO, Company Name",
+          "info": "Job title and company (optional)"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Author Avatar",
+          "info": "Profile photo of the reviewer (optional)"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5,
+          "info": "Rating out of 5 stars"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "Working with this team has been an absolute game-changer for our business. Their attention to detail and commitment to excellence is unmatched.",
+          "info": "The main review content"
+        },
+        {
+          "type": "text",
+          "id": "review_date",
+          "label": "Review Date",
+          "default": "January 2024",
+          "info": "When the review was written (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Client Review",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Sarah Johnson",
+            "author_position": "Marketing Director, TechCorp",
+            "rating": 5,
+            "review_text": "Exceptional service and outstanding results! The team went above and beyond to deliver exactly what we needed. Highly recommend to anyone looking for quality work.",
+            "review_date": "March 2024"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Michael Chen",
+            "author_position": "Founder, StartupXYZ",
+            "rating": 5,
+            "review_text": "Professional, reliable, and incredibly talented. They transformed our vision into reality and exceeded all our expectations. The communication throughout the process was excellent.",
+            "review_date": "February 2024"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Emily Rodriguez",
+            "author_position": "Project Manager, Global Solutions",
+            "rating": 5,
+            "review_text": "Working with this team has been a fantastic experience. They delivered on time, within budget, and the quality of work was superior to anything we've seen before.",
+            "review_date": "January 2024"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
