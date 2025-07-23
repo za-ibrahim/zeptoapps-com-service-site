@@ -196,6 +196,7 @@
   /* Navigation Buttons */
   .slider-nav {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -239,10 +240,11 @@
   .dot {
     width: 12px;
     height: 12px;
+    cursor: pointer;
     border-radius: 50%;
     background: #e5e7eb;
-    cursor: pointer;
     transition: all 0.3s ease;
+    display: inline-block !important;
   }
 
   .dot.active {
@@ -292,6 +294,10 @@
   @media (max-width: 768px) {
     .review-slide {
       min-width: 100% !important;
+    }
+    
+    .reviews-track {
+      gap: 0px;
     }
     
     .review-card {
@@ -458,13 +464,18 @@
 
         {% if section.blocks.size > 1 %}
           <div class="slider-nav">
-            <button class="nav-btn prev-btn" id="prev-btn" aria-label="Previous review">‹</button>
-            <div class="slider-dots" id="slider-dots">
-              {% for block in section.blocks %}
-                <div class="dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></div>
-              {% endfor %}
-            </div>
-            <button class="nav-btn next-btn" id="next-btn" aria-label="Next review">›</button>
+            {% if section.settings.enable_dots %}
+              <div class="slider-dots" id="slider-dots">
+                {% for block in section.blocks %}
+                  <div class="dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}"></div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div style="display: flex; gap: 10px;">
+                <button class="nav-btn prev-btn" id="prev-btn" aria-label="Previous review">‹</button>
+                <button class="nav-btn next-btn" id="next-btn" aria-label="Next review">›</button>
+              </div>
+            {% endif %}
           </div>
           {% if section.settings.autoplay %}
             <div class="autoplay-progress" style="--autoplay-duration: {{ section.settings.autoplay_speed }}ms;"></div>
@@ -518,29 +529,58 @@
 
     // Calculate slides per view based on screen size
     function calculateSlidesPerView() {
-      const containerWidth = slider.offsetWidth;
+      const containerWidth = window.innerWidth
+      
+      // Determine slides per view based on breakpoints
       if (containerWidth >= 1024) {
         slidesPerView = Math.min(3, slides.length);
+        if(dots.length > 3) {
+          dots[dots.length - 1].remove();
+          dots.length > 4 && dots[dots.length - 2].remove();
+        }
       } else if (containerWidth >= 768) {
         slidesPerView = Math.min(2, slides.length);
+        dots.length > 2 && dots[dots.length - 1].remove();
       } else {
+        // Mobile: always show 1 slide
         slidesPerView = 1;
       }
+      
+      // Ensure we don't exceed total slides
+      slidesPerView = Math.min(slidesPerView, slides.length);
     }
 
     // Update slider position
     function updateSlider(animate = true) {
-      const slideWidth = 100 / slidesPerView;
-      const translateX = -(currentSlide * slideWidth);
+      const containerWidth = slider.offsetWidth;
+      const gapSize = 30; // Gap between slides in pixels
+      
+      // Calculate slide width including gap
+      let slideWidth, translateX;
+
+      if (slidesPerView === 1) {
+        // For single slide, use full width
+        slideWidth = containerWidth;
+        translateX = -(currentSlide * slideWidth);
+      } else {
+        // For multiple slides, account for gaps
+        const totalGapWidth = (slidesPerView - 1) * gapSize;
+        const availableWidth = containerWidth - totalGapWidth;
+        slideWidth = availableWidth / slidesPerView;
+        console.log("availableWidth", availableWidth)
+        
+        // Calculate translation including gaps
+        translateX = -(currentSlide * (slideWidth + gapSize));
+      }
       
       if (animate) {
         track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       } else {
         track.style.transition = 'none';
       }
-      
-      track.style.transform = `translateX(${translateX}%)`;
-      
+
+      track.style.transform = `translateX(${translateX}px)`;
+
       // Update dots
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlide);
@@ -614,9 +654,8 @@
       e.preventDefault();
       currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
       const diff = currentX - startX;
-      const percentage = (diff / slider.offsetWidth) * 100;
       
-      track.style.transform = `translateX(${startTransform + percentage}px)`;
+      track.style.transform = `translateX(${startTransform + diff}px)`;
     }
 
     function handleEnd() {
@@ -869,6 +908,12 @@
     },
     {
       "type": "checkbox",
+      "id": "enable_dots",
+      "label": "Enable Dots Navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
       "id": "autoplay",
       "label": "Enable Autoplay",
       "default": true,
@@ -878,7 +923,7 @@
       "type": "range",
       "id": "autoplay_speed",
       "min": 3000,
-      "max": 10000,
+      "max": 9000,
       "step": 500,
       "unit": "ms",
       "label": "Autoplay Speed",
