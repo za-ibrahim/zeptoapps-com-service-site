@@ -7,18 +7,6 @@
     text-align: center;
   }
 
-  .why-choose-section {
-    padding: 60px 20px;
-    background: #f9f9f9;
-    text-align: center;
-  }
-
-  .why-choose-section h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    font-weight: bold;
-  }
-
   .why-choose-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -88,7 +76,7 @@
 
 {% schema %}
 {
-  "name": "Why Choose Us",
+  "name": "Featured Points",
   "tag": "section",
   "settings": [
     {
@@ -158,18 +146,6 @@
       "name": "Point",
       "settings": [
         {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Fast & Reliable"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Our team ensures quick delivery and exceptional customer service."
-        },
-        {
           "type": "image_picker",
           "id": "icon",
           "label": "Icon (optional)"
@@ -184,6 +160,18 @@
           "default": 64
         },
         {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast & Reliable"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Our team ensures quick delivery and exceptional customer service."
+        },
+        {
           "type": "select",
           "id": "text_alignment",
           "label": "Text Alignment",
@@ -193,6 +181,18 @@
             { "value": "center", "label": "Center" },
             { "value": "right", "label": "Right" }
           ]
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_box_shadow",
+          "label": "Enable Initial Box Shadow",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_hover_effect",
+          "label": "Enable Hover Effect",
+          "default": true
         }
       ]
     }
