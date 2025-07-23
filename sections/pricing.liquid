@@ -33,6 +33,8 @@
   }
 
   .pricing-card {
+    display: flex;
+    flex-direction: column;
     background: {{ section.settings.card_background }};
     border-radius: {{ section.settings.card_border_radius }}px;
     padding: {{ section.settings.card_padding }}px;
@@ -49,7 +51,6 @@
   }
 
   .pricing-card.featured {
-    transform: scale({{ section.settings.featured_scale }});
     border-color: {{ section.settings.featured_border_color }};
     background: {{ section.settings.featured_background }};
   }
@@ -238,15 +239,15 @@
     .pricing-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .pricing-card.featured {
       transform: none;
     }
-    
+
     .pricing-title {
       font-size: calc({{ section.settings.heading_size }}px * 0.8);
     }
-    
+
     .price-amount {
       font-size: calc({{ section.settings.price_size }}px * 0.9);
     }
@@ -281,7 +282,7 @@
       {% if block.type == 'pricing_plan' %}
         <div class="pricing-card {% if block.settings.featured %}featured{% endif %}" {{ block.shopify_attributes }}>
           <h3 class="plan-name">{{ block.settings.plan_name }}</h3>
-          
+
           <div class="plan-price">
             <span class="price-amount">
               <span class="price-currency">{{ block.settings.currency_symbol }}</span>
@@ -298,25 +299,27 @@
             <p class="plan-description">{{ block.settings.plan_description }}</p>
           {% endif %}
 
-          {% if block.settings.features != blank %}
-            <ul class="plan-features">
-              {% assign features_list = block.settings.features | split: ',' %}
-              {% for feature in features_list %}
-                {% assign feature_trimmed = feature | strip %}
-                {% if feature_trimmed contains '[unavailable]' %}
-                  <li class="unavailable">{{ feature_trimmed | remove: '[unavailable]' | strip }}</li>
-                {% else %}
-                  <li>{{ feature_trimmed }}</li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          {% endif %}
+          <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+            {% if block.settings.features != blank %}
+              <ul class="plan-features">
+                {% assign features_list = block.settings.features | split: ',' %}
+                {% for feature in features_list %}
+                  {% assign feature_trimmed = feature | strip %}
+                  {% if feature_trimmed contains '[unavailable]' %}
+                    <li class="unavailable">{{ feature_trimmed | remove: '[unavailable]' | strip }}</li>
+                  {% else %}
+                    <li>{{ feature_trimmed }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
 
-          {% if block.settings.button_text != blank %}
-            <a href="{{ block.settings.button_url | default: '#' }}" class="plan-button">
-              {{ block.settings.button_text }}
-            </a>
-          {% endif %}
+            {% if block.settings.button_text != blank %}
+              <a href="{{ block.settings.button_url | default: '#' }}" class="plan-button">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
         </div>
       {% endif %}
     {% endfor %}
@@ -324,34 +327,34 @@
 </div>
 
 {% if section.settings.show_billing_toggle %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.getElementById('billing-toggle');
-  const monthlyLabels = document.querySelectorAll('.monthly-price, .monthly-period');
-  const yearlyLabels = document.querySelectorAll('.yearly-price, .yearly-period');
-  const monthlyLabel = document.getElementById('monthly-label');
-  const yearlyLabel = document.getElementById('yearly-label');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('billing-toggle');
+      const monthlyLabels = document.querySelectorAll('.monthly-price, .monthly-period');
+      const yearlyLabels = document.querySelectorAll('.yearly-price, .yearly-period');
+      const monthlyLabel = document.getElementById('monthly-label');
+      const yearlyLabel = document.getElementById('yearly-label');
 
-  function updatePricing() {
-    if (toggle.checked) {
-      // Show yearly pricing
-      monthlyLabels.forEach(el => el.style.display = 'none');
-      yearlyLabels.forEach(el => el.style.display = 'inline');
-      monthlyLabel.classList.remove('active');
-      yearlyLabel.classList.add('active');
-    } else {
-      // Show monthly pricing
-      monthlyLabels.forEach(el => el.style.display = 'inline');
-      yearlyLabels.forEach(el => el.style.display = 'none');
-      monthlyLabel.classList.add('active');
-      yearlyLabel.classList.remove('active');
-    }
-  }
+      function updatePricing() {
+        if (toggle.checked) {
+          // Show yearly pricing
+          monthlyLabels.forEach((el) => (el.style.display = 'none'));
+          yearlyLabels.forEach((el) => (el.style.display = 'inline'));
+          monthlyLabel.classList.remove('active');
+          yearlyLabel.classList.add('active');
+        } else {
+          // Show monthly pricing
+          monthlyLabels.forEach((el) => (el.style.display = 'inline'));
+          yearlyLabels.forEach((el) => (el.style.display = 'none'));
+          monthlyLabel.classList.add('active');
+          yearlyLabel.classList.remove('active');
+        }
+      }
 
-  toggle.addEventListener('change', updatePricing);
-  updatePricing(); // Initialize
-});
-</script>
+      toggle.addEventListener('change', updatePricing);
+      updatePricing(); // Initialize
+    });
+  </script>
 {% endif %}
 {% endcapture %}
 
@@ -550,15 +553,6 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "header",
       "content": "Featured Card Settings"
-    },
-    {
-      "type": "range",
-      "id": "featured_scale",
-      "min": 1,
-      "max": 3,
-      "step": 1,
-      "label": "Featured Card Scale",
-      "default": 1
     },
     {
       "type": "color",
