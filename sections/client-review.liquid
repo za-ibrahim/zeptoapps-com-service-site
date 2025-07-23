@@ -11,7 +11,7 @@
   }
 
   .client-review-section {
-    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
     background: var(--gradient-background);
     position: relative;
     overflow: hidden;
@@ -305,8 +305,8 @@
     }
     
     .client-review-section {
-      padding-left: 16px;
-      padding-right: 16px;
+      {% comment %} padding-left: 16px;
+      padding-right: 16px; {% endcomment %}
     }
     
     .review-stats {

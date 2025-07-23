@@ -1,0 +1,1051 @@
+{% capture section_content %}
+<style>
+  .pricing-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: {{ section.settings.cards_spacing }}px;
+  }
+
+  .pricing-title {
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    color: {{ section.settings.heading_color }};
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .pricing-subtitle {
+    font-size: {{ section.settings.subtitle_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin-bottom: 0;
+    opacity: 0.8;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: {{ section.settings.cards_spacing }}px;
+    margin-top: {{ section.settings.cards_spacing }}px;
+  }
+
+  .pricing-card {
+    background: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    box-shadow: {{ section.settings.card_shadow }};
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-{{ section.settings.hover_lift }}px);
+    box-shadow: {{ section.settings.card_hover_shadow }};
+  }
+
+  .pricing-card.featured {
+    transform: scale({{ section.settings.featured_scale }});
+    border-color: {{ section.settings.featured_border_color }};
+    background: {{ section.settings.featured_background }};
+  }
+
+  .pricing-card.featured::before {
+    content: "{{ section.settings.featured_badge_text }}";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: {{ section.settings.featured_badge_bg }};
+    color: {{ section.settings.featured_badge_color }};
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .plan-name {
+    font-size: {{ section.settings.plan_name_size }}px;
+    font-weight: {{ section.settings.plan_name_weight }};
+    color: {{ section.settings.plan_name_color }};
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    margin-bottom: 24px;
+  }
+
+  .price-amount {
+    font-size: {{ section.settings.price_size }}px;
+    font-weight: {{ section.settings.price_weight }};
+    color: {{ section.settings.price_color }};
+    line-height: 1;
+  }
+
+  .price-currency {
+    font-size: {{ section.settings.currency_size }}px;
+    vertical-align: top;
+  }
+
+  .price-period {
+    font-size: {{ section.settings.period_size }}px;
+    color: {{ section.settings.period_color }};
+    margin-left: 4px;
+  }
+
+  .plan-description {
+    font-size: {{ section.settings.description_size }}px;
+    color: {{ section.settings.description_color }};
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    text-align: left;
+  }
+
+  .plan-features li {
+    padding: 8px 0;
+    font-size: {{ section.settings.features_size }}px;
+    color: {{ section.settings.features_color }};
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .plan-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: {{ section.settings.checkmark_color }};
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .plan-features li.unavailable {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .plan-features li.unavailable::before {
+    content: "✗";
+    color: #e74c3c;
+  }
+
+  .plan-button {
+    display: inline-block;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_color }};
+    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    text-decoration: none;
+    font-weight: {{ section.settings.button_weight }};
+    font-size: {{ section.settings.button_size }}px;
+    border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .plan-button:hover {
+    background: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_color }};
+    border-color: {{ section.settings.button_hover_border }};
+    transform: translateY(-2px);
+  }
+
+  .featured .plan-button {
+    background: {{ section.settings.featured_button_bg }};
+    color: {{ section.settings.featured_button_color }};
+    border-color: {{ section.settings.featured_button_border }};
+  }
+
+  .featured .plan-button:hover {
+    background: {{ section.settings.featured_button_hover_bg }};
+    color: {{ section.settings.featured_button_hover_color }};
+  }
+
+  .pricing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .toggle-slider {
+    background-color: {{ section.settings.toggle_active_color }};
+  }
+
+  input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+  }
+
+  .toggle-label {
+    font-weight: 500;
+    color: {{ section.settings.toggle_label_color }};
+  }
+
+  .toggle-label.active {
+    color: {{ section.settings.toggle_active_label_color }};
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .pricing-card.featured {
+      transform: none;
+    }
+    
+    .pricing-title {
+      font-size: calc({{ section.settings.heading_size }}px * 0.8);
+    }
+    
+    .price-amount {
+      font-size: calc({{ section.settings.price_size }}px * 0.9);
+    }
+  }
+</style>
+
+<div class="pricing-section">
+  {% if section.settings.heading != blank or section.settings.subtitle != blank %}
+    <div class="pricing-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="pricing-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="pricing-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_billing_toggle %}
+    <div class="pricing-toggle">
+      <span class="toggle-label" id="monthly-label">{{ section.settings.monthly_label }}</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billing-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="yearly-label">{{ section.settings.yearly_label }}</span>
+    </div>
+  {% endif %}
+
+  <div class="pricing-grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'pricing_plan' %}
+        <div class="pricing-card {% if block.settings.featured %}featured{% endif %}" {{ block.shopify_attributes }}>
+          <h3 class="plan-name">{{ block.settings.plan_name }}</h3>
+          
+          <div class="plan-price">
+            <span class="price-amount">
+              <span class="price-currency">{{ block.settings.currency_symbol }}</span>
+              <span class="monthly-price">{{ block.settings.monthly_price }}</span>
+              <span class="yearly-price" style="display: none;">{{ block.settings.yearly_price }}</span>
+            </span>
+            <span class="price-period">
+              <span class="monthly-period">{{ block.settings.monthly_period }}</span>
+              <span class="yearly-period" style="display: none;">{{ block.settings.yearly_period }}</span>
+            </span>
+          </div>
+
+          {% if block.settings.plan_description != blank %}
+            <p class="plan-description">{{ block.settings.plan_description }}</p>
+          {% endif %}
+
+          {% if block.settings.features != blank %}
+            <ul class="plan-features">
+              {% assign features_list = block.settings.features | split: ',' %}
+              {% for feature in features_list %}
+                {% assign feature_trimmed = feature | strip %}
+                {% if feature_trimmed contains '[unavailable]' %}
+                  <li class="unavailable">{{ feature_trimmed | remove: '[unavailable]' | strip }}</li>
+                {% else %}
+                  <li>{{ feature_trimmed }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if block.settings.button_text != blank %}
+            <a href="{{ block.settings.button_url | default: '#' }}" class="plan-button">
+              {{ block.settings.button_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% if section.settings.show_billing_toggle %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('billing-toggle');
+  const monthlyLabels = document.querySelectorAll('.monthly-price, .monthly-period');
+  const yearlyLabels = document.querySelectorAll('.yearly-price, .yearly-period');
+  const monthlyLabel = document.getElementById('monthly-label');
+  const yearlyLabel = document.getElementById('yearly-label');
+
+  function updatePricing() {
+    if (toggle.checked) {
+      // Show yearly pricing
+      monthlyLabels.forEach(el => el.style.display = 'none');
+      yearlyLabels.forEach(el => el.style.display = 'inline');
+      monthlyLabel.classList.remove('active');
+      yearlyLabel.classList.add('active');
+    } else {
+      // Show monthly pricing
+      monthlyLabels.forEach(el => el.style.display = 'inline');
+      yearlyLabels.forEach(el => el.style.display = 'none');
+      monthlyLabel.classList.add('active');
+      yearlyLabel.classList.remove('active');
+    }
+  }
+
+  toggle.addEventListener('change', updatePricing);
+  updatePricing(); // Initialize
+});
+</script>
+{% endif %}
+{% endcapture %}
+
+{% render 'custom-layout-wrapper', content: section_content %}
+
+{% schema %}
+{
+  "name": "Pricing/Packages",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Choose Your Perfect Plan"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Select the package that best fits your needs and budget"
+    },
+    {
+      "type": "header",
+      "content": "Typography Settings"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 42
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Billing Toggle"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_billing_toggle",
+      "label": "Show Monthly/Yearly Toggle",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "monthly_label",
+      "label": "Monthly Label",
+      "default": "Monthly"
+    },
+    {
+      "type": "text",
+      "id": "yearly_label",
+      "label": "Yearly Label",
+      "default": "Yearly"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_color",
+      "label": "Toggle Active Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "toggle_label_color",
+      "label": "Toggle Label Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_label_color",
+      "label": "Toggle Active Label Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "header",
+      "content": "Card Layout"
+    },
+    {
+      "type": "range",
+      "id": "cards_spacing",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Cards Spacing",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Card Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "text",
+      "id": "card_shadow",
+      "label": "Card Shadow",
+      "default": "0 4px 20px rgba(0,0,0,0.1)"
+    },
+    {
+      "type": "text",
+      "id": "card_hover_shadow",
+      "label": "Card Hover Shadow",
+      "default": "0 12px 40px rgba(0,0,0,0.15)"
+    },
+    {
+      "type": "range",
+      "id": "hover_lift",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Hover Lift Effect",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Featured Card Settings"
+    },
+    {
+      "type": "range",
+      "id": "featured_scale",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Featured Card Scale",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "featured_background",
+      "label": "Featured Card Background",
+      "default": "#f8f9ff"
+    },
+    {
+      "type": "color",
+      "id": "featured_border_color",
+      "label": "Featured Card Border Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "text",
+      "id": "featured_badge_text",
+      "label": "Featured Badge Text",
+      "default": "Most Popular"
+    },
+    {
+      "type": "color",
+      "id": "featured_badge_bg",
+      "label": "Featured Badge Background",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "featured_badge_color",
+      "label": "Featured Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Plan Name Typography"
+    },
+    {
+      "type": "range",
+      "id": "plan_name_size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Plan Name Font Size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "plan_name_weight",
+      "label": "Plan Name Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "plan_name_color",
+      "label": "Plan Name Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Price Typography"
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "min": 32,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Price Font Size",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "price_weight",
+      "label": "Price Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "currency_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Currency Symbol Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "period_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Period Text Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "period_color",
+      "label": "Period Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Description & Features"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "features_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Features Font Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "features_color",
+      "label": "Features Text Color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "checkmark_color",
+      "label": "Checkmark Color",
+      "default": "#28a745"
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Vertical Padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border",
+      "label": "Button Hover Border Color",
+      "default": "#333333"
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Button Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Featured Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "featured_button_bg",
+      "label": "Featured Button Background",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "featured_button_color",
+      "label": "Featured Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "featured_button_border",
+      "label": "Featured Button Border Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "featured_button_hover_bg",
+      "label": "Featured Button Hover Background",
+      "default": "#0056CC"
+    },
+    {
+      "type": "color",
+      "id": "featured_button_hover_color",
+      "label": "Featured Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Color Scheme"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_plan",
+      "name": "Pricing Plan",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Plan Details"
+        },
+        {
+          "type": "text",
+          "id": "plan_name",
+          "label": "Plan Name",
+          "default": "Basic Plan"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_description",
+          "label": "Plan Description",
+          "default": "Perfect for getting started with our services"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Mark as Featured",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Pricing"
+        },
+        {
+          "type": "text",
+          "id": "currency_symbol",
+          "label": "Currency Symbol",
+          "default": "$"
+        },
+        {
+          "type": "text",
+          "id": "monthly_price",
+          "label": "Monthly Price",
+          "default": "29"
+        },
+        {
+          "type": "text",
+          "id": "monthly_period",
+          "label": "Monthly Period Text",
+          "default": "/month"
+        },
+        {
+          "type": "text",
+          "id": "yearly_price",
+          "label": "Yearly Price",
+          "default": "299"
+        },
+        {
+          "type": "text",
+          "id": "yearly_period",
+          "label": "Yearly Period Text",
+          "default": "/year"
+        },
+        {
+          "type": "header",
+          "content": "Features"
+        },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features (comma-separated)",
+          "info": "Add [unavailable] after any feature to show it as unavailable",
+          "default": "Up to 10 projects, Email support, Basic analytics, Mobile app access, [unavailable] Priority support"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Get Started"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing/Packages",
+      "blocks": [
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "plan_name": "Starter",
+            "plan_description": "Perfect for small businesses just getting started",
+            "monthly_price": "29",
+            "yearly_price": "299",
+            "features": "Up to 5 projects, Email support, Basic analytics, Mobile app access",
+            "button_text": "Start Free Trial"
+          }
+        },
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "plan_name": "Professional",
+            "plan_description": "Ideal for growing businesses and teams",
+            "monthly_price": "79",
+            "yearly_price": "799",
+            "featured": true,
+            "features": "Up to 25 projects, Priority support, Advanced analytics, Mobile app access, Team collaboration, Custom integrations",
+            "button_text": "Get Started"
+          }
+        },
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "plan_name": "Enterprise",
+            "plan_description": "For large organizations with advanced needs",
+            "monthly_price": "199",
+            "yearly_price": "1999",
+            "features": "Unlimited projects, 24/7 phone support, Advanced analytics, Mobile app access, Team collaboration, Custom integrations, Dedicated account manager, Custom training",
+            "button_text": "Contact Sales"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
