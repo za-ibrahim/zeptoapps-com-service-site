@@ -1,4 +1,4 @@
-{% comment %} {% capture section_content %} {% endcomment %}
+{% capture section_content %}
 <style>
   h1 {
     font-size: 32px;
@@ -6,6 +6,7 @@
     font-weight: bold;
     text-align: center;
   }
+
   .marquee-section {
     overflow: hidden;
     display: flex;
@@ -16,7 +17,6 @@
     white-space: nowrap;
     width: 100%;
   }
-
   .marquee-track {
     display: inline-flex;
   }
@@ -26,7 +26,6 @@
   .marquee-2 {
     animation: marquee-reverse {{ section.settings.animation_speed }}s linear infinite;
   }
-
   .marquee-track div {
     width: 20rem;
     display: flex;
@@ -47,7 +46,6 @@
     transform: scale(0.9);
     transition: filter 0.3s ease, transform 0.3s ease;
   }
-
   .marquee-track div:hover img {
     transform: scale(0.85);
   }
@@ -153,7 +151,7 @@
     </div>
   {% endif %}
 </section>
-{% comment %} {% endcapture %} {% endcomment %}
+{% endcapture %}
 
 {% render 'custom-layout-wrapper', content: section_content %}
 

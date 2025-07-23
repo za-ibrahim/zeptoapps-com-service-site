@@ -61,7 +61,9 @@
   }
 </style>
 
-<h1>{{ section.settings.heading | default }}</h1>
+{% if section.settings.heading %}
+  <h1>{{ section.settings.heading }}</h1>
+{% endif %}
 <div class="why-choose-grid">
   {% for block in section.blocks %}
     <div class="why-choose-card" style="text-align: {{ block.settings.text_alignment | default: 'center' }};">
