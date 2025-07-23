@@ -1,10 +1,16 @@
-{% capture section_content %}
+{% comment %} {% capture section_content %} {% endcomment %}
 <style>
   h1 {
     font-size: 32px;
     margin-bottom: 40px;
     font-weight: bold;
     text-align: center;
+  }
+  .marquee-section {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .marquee {
     white-space: nowrap;
@@ -28,11 +34,11 @@
     overflow: hidden;
     align-items: center;
     background: white;
-    margin-right: 0.75rem;
-    border-radius: 0.85rem;
+    margin-right: 1.5rem;
+    border-radius: none;
     justify-content: center;
     border: 1px solid white;
-    box-shadow: 0 2px 4px rgba(158, 158, 158, 0.2);
+    box-shadow: {% if section.settings.enable_box_shadow %} 0 2px 4px rgba(158, 158, 158, 0.2) {% endif %};
   }
   .marquee-track div img {
     height: 100%;
@@ -69,7 +75,7 @@
 {% endif %}
 {% assign brand_length = section.blocks.size %}
 {% assign brand_length_half = brand_length | divided_by: 2 %}
-<section class="overflow-hidden">
+<section class="marquee-section">
   <div class="marquee">
     <div class="marquee-track marquee-1">
       {% for block in section.blocks limit: brand_length_half %}
@@ -108,7 +114,7 @@
     </div>
   </div>
   {% if section.settings.second_marquee %}
-    <div class="marquee mt-3">
+    <div class="marquee">
       <div class="marquee-track marquee-2">
         {% for block in section.blocks limit: brand_length_half %}
           <div>
@@ -147,7 +153,7 @@
     </div>
   {% endif %}
 </section>
-{% endcapture %}
+{% comment %} {% endcapture %} {% endcomment %}
 
 {% render 'custom-layout-wrapper', content: section_content %}
 
@@ -206,6 +212,12 @@
       "type": "checkbox",
       "id": "second_marquee",
       "label": "Extra Marquee row",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_box_shadow",
+      "label": "Enable Box Shadow",
       "default": true
     },
     {
