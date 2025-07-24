@@ -1,0 +1,329 @@
+{% comment %} {% capture section_content %} {% endcomment %}
+<style>
+    ._service-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: center;
+        gap: 30px;
+    }
+    ._card {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        border-radius: 0px;
+        background: {{ section.settings.card_bg_color }};
+        box-shadow: {% if section.settings.card_shadow %}0 4px 15px rgba(0, 0, 0, 0.05){% else %}none{% endif %};
+        transition: 1s all;
+        overflow: hidden;
+    }
+    ._card::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        right: -30%;
+        width: 120px;
+        height: 120px;
+        background: {{ section.settings.card_shade_bg_color }};
+        filter: blur(70px);
+        border-radius: 50%;
+        transition: width 1s, height 1s;
+    }
+    ._card::before {
+        content: '';
+        position: absolute;
+        bottom: -160%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background: {{ section.settings.card_shade_bg_color }};
+        border-radius: 20%;
+        filter: blur(70px);
+        transition: all 1s ease-in-out;
+    }
+    ._containers {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+    }
+    ._buttonCard{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    ._icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 6px;
+        background: #e5f6eb;
+    }
+    ._card:hover ._icon {
+        background: {{ section.settings.card_shade_bg_color }};
+        transition: 1s all;
+    }
+    ._card:hover ._icon svg,
+    ._card:hover ._linkMore svg {
+        filter: brightness(0) invert(1);
+        transition: 1s all;
+    }
+    ._title {
+      width: 100%;
+        color: {{ section.settings.card_title_color }};
+        font-size: 2rem;
+        font-weight: 700;
+        transition: 1s all;
+        margin: 1rem 0;
+        word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+    }
+    ._subtitle {
+        width: 100%;
+        color: {{ section.settings.card_subtitle_color }};
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        transition: 1s all;
+        word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+    }
+    ._linkMore {
+        width: 100%;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+        text-decoration: none;
+        transition: 1s all;
+        margin-top: 1rem;
+        color: {{ section.settings.card_button_text_color }};
+        background: {{ section.settings.card_button_bg_color }};
+    }
+</style>
+
+{% if section.settings.heading %}
+  <h1>{{ section.settings.heading }}</h1>
+{% endif %}
+<div class="_service-section">
+  {% for service in section.blocks %}
+    <div
+      class="_card"
+      {% if service.settings.make_button_card %}
+        style="justify-content: center !important; gap: 1rem !important; background: {{ service.settings.button_card_bg_color }} !important;"
+      {% endif %}
+    >
+      <div class="{% if service.settings.make_button_card %}_buttonCard{% else %}_containers{% endif %}">
+        <div>
+          {% if service.settings.make_button_card != true %}
+            <div class="_icon">
+              {% if service.settings.icon %}
+                <img
+                  src="{{ service.settings.icon | image_url: width: service.settings.icon_size | default: 64 }}"
+                  alt="{{ service.settings.title }}"
+                  width="{{ service.settings.icon_size | default: 64 }}"
+                  height="{{ service.settings.icon_size | default: 64 }}"
+                  style="width: 100%; height: 100%; object-fit: contain;"
+                >
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                </svg>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if service.settings.title %}
+            <div
+              class="_title"
+              {% if service.settings.make_button_card %}
+                style="font-size: 2.25rem !important;"
+              {% endif %}
+            >
+              {{ service.settings.title }}
+            </div>
+          {% endif %}
+          {% if service.settings.make_button_card != true and service.settings.description %}
+            <div class="_subtitle">
+              {{ service.settings.description }}
+            </div>
+          {% endif %}
+        </div>
+        {% if service.settings.make_button_card and service.settings.button_card_text %}
+          <a href="{{ service.settings.button_card_link }}">
+            <div class="_linkMore">{{ service.settings.button_card_text }}</div>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% comment %} {% endcapture %} {% endcomment %}
+
+{% render 'custom-layout-wrapper', content: section_content %}
+
+{% schema %}
+{
+  "name": "Showcase services",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+      "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Unleash Possibilities with Our Exceptional Services"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "checkbox",
+      "id": "card_shadow",
+      "label": "Button Card Shadow",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Button Card Background Color",
+      "default": "#ffffff",
+      "info": "This color will be used for the button if 'Make this a button card' is enabled."
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Button Card Title Color",
+      "default": "#072713",
+      "info": "This color will be used for the button title if 'Make this a button card' is enabled."
+    },
+    {
+      "type": "color",
+      "id": "card_subtitle_color",
+      "label": "Button Card Subtitle Color",
+      "default": "#7e8882",
+      "info": "This color will be used for the button subtitle if 'Make this a button card' is enabled."
+    },
+    {
+      "type": "color",
+      "id": "card_button_bg_color",
+      "label": "Button Card Button Background Color",
+      "default": "#000000",
+      "info": "This color will be used for the button background if 'Make this a button card' is enabled."
+    },
+    {
+      "type": "color",
+      "id": "card_button_text_color",
+      "label": "Button Card Button Text Color",
+      "default": "#ffffff",
+      "info": "This color will be used for the button text if 'Make this a button card' is enabled."
+    },
+    {
+      "type": "color",
+      "id": "card_shade_bg_color",
+      "label": "Button Card Shade Background Color",
+      "default": "#23c55e",
+      "info": "This color will be used for the button background on hover if 'Make this a button card' is enabled."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "service card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (optional)"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size (px)",
+          "min": 24,
+          "max": 128,
+          "step": 2,
+          "default": 64
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Shopify Store Setup"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Unlock your earning potential with our fully functional Shopify store setup services from scratch."
+        },
+        {
+          "type": "checkbox",
+          "id": "make_button_card",
+          "label": "Make this a button card",
+          "info": "If enabled, this service card will be displayed as a button. Recommended for turn on for the last card.",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "button_card_text",
+          "label": "Button Card Title",
+          "info": "This text will be used as the button title if 'Make this a button card' is enabled."
+        },
+        {
+          "type": "text",
+          "id": "button_card_link",
+          "label": "Button Card Link",
+          "info": "This link will be used for the button if 'Make this a button card' is enabled."
+        },
+        {
+          "type": "color",
+          "id": "button_card_bg_color",
+          "label": "Button Card Background Color",
+          "default": "#aaa000",
+          "info": "This color will be used for the button if 'Make this a button card' is enabled."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

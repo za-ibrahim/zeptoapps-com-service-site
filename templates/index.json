@@ -191,6 +191,9 @@
         "client-review": {
             "type": "client-review",
         },
+        "service-showcase": {
+            "type": "service-showcase",
+        },
         // "1656503053c400aaa3": {
         //     "type": "custom-liquid",
         //     "disabled": true,
@@ -340,6 +343,7 @@
         "165803861970f6911d",
         "why-choose-us",
         "client-review",
+        "service-showcase"
         // "1656503053c400aaa3",
         // "rich_text",
         // "featured_collection",
