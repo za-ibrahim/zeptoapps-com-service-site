@@ -1,5 +1,11 @@
 {% capture section_content %}
 <style>
+  h1.service_heading {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-align: center;
+  }
   ._service-section {
     max-width: 1400px;
     margin: 0 auto;
@@ -120,7 +126,7 @@
 </style>
 
 {% if section.settings.heading %}
-  <h1>{{ section.settings.heading }}</h1>
+  <h1 class="service_heading">{{ section.settings.heading }}</h1>
 {% endif %}
 <div class="_service-section">
   {% for service in section.blocks %}

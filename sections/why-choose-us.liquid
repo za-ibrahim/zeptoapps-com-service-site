@@ -1,6 +1,6 @@
 {% capture section_content %}
 <style>
-  h1 {
+  h1.why-choose-heading {
     font-size: 32px;
     margin-bottom: 40px;
     font-weight: bold;
@@ -50,7 +50,7 @@
 </style>
 
 {% if section.settings.heading %}
-  <h1>{{ section.settings.heading }}</h1>
+  <h1 class="why-choose-heading">{{ section.settings.heading }}</h1>
 {% endif %}
 <div class="why-choose-grid">
   {% for block in section.blocks %}
